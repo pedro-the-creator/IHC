@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 30px;
+}
+
+h1 {
+  color: #333;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+p#resultado {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+</style>
+
+<script>
+    function exibirMensagem() {
+  const opcoesSelect = document.getElementById('opcoes');
+  const escolha = opcoesSelect.value;
+
+  let mensagem = '';
+
+  switch (escolha) {
+    case '1':
+      mensagem = 'Opção 1 escolhida';
+      break;
+    case '2':
+      mensagem = 'Opção 2 escolhida';
+      break;
+    case '3':
+      mensagem = 'Opção 3 escolhida';
+      break;
+    default:
+      mensagem = 'Opção inválida';
+  }
+
+  const resultadoElement = document.getElementById('resultado');
+  resultadoElement.textContent = mensagem;
+}
+
+</script>
+
+<head>
+  <title>Menu de Opções</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Menu de Opções</h1>
+  <label for="opcoes">Escolha uma opção:</label>
+  <select id="opcoes">
+    <option value="1">1. Opção 1</option>
+    <option value="2">2. Opção 2</option>
+    <option value="3">3. Opção 3</option>
+  </select>
+  <button onclick="exibirMensagem()">Exibir Mensagem</button>
+  <p id="resultado"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
