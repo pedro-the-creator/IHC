@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+header{
+  padding: 10px 10px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 5px 5px 5px 5px;
+  font-size: 60px;
+  background-color: #554118
+
+
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 30px;
+  background-color: #b1b17f
+}
+
+h1 {
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+p#mensagem {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+</style>
+
+<script>
+  //Ex3
+  function verificarNota() {
+  const notaInput = document.getElementById('nota');
+  const nota = parseFloat(notaInput.value);
+
+  let mensagem = '';
+
+  if (nota < 6) {
+    mensagem = 'Reprovado';
+  } else if (nota >= 6 && nota < 8) {
+    mensagem = 'Aprovado';
+  } else {
+    mensagem = 'Aprovado com louvor';
+  }
+
+  const mensagemElement = document.getElementById('mensagem');
+  mensagemElement.textContent = mensagem;
+    }
+  //Ex4
+  function ex4CalcularMedia() {
+  const numerosInput = document.getElementById('numeros');
+  const numeros = numerosInput.value.split(',').map(num => parseFloat(num.trim()));
+
+  if (numeros.some(isNaN)) {
+    alert('Por favor, insira apenas números válidos separados por vírgula.');
+    return;
+  }
+
+  const totalNumeros = numeros.length;
+  if (totalNumeros === 0) {
+    alert('Por favor, insira ao menos um número válido.');
+    return;
+  }
+
+  const soma = numeros.reduce((acc, num) => acc + num, 0);
+  const media = soma / totalNumeros;
+
+  const resultadoElement = document.getElementById('resultado');
+  resultadoElement.textContent = `A média dos números é: ${media.toFixed(2)}`;
+}
+ //Ex5
+ function ex5ExibirMensagem() {
+  const letraInput = document.getElementById('letra');
+  const minhaVariavel = letraInput.value.trim().toLowerCase();
+
+  let mensagem = '';
+
+  if (minhaVariavel === "a") {
+    mensagem = "A";
+  } else if (minhaVariavel === "b") {
+    mensagem = "B";
+  } else {
+    mensagem = "Outra letra";
+  }
+
+  const resultadoElement = document.getElementById('resultadoo');
+  resultadoElement.textContent = mensagem;
+}
+ //Ex6
+ function ex6CalcularSoma() {
+  const matrizInput = document.getElementById('matriz');
+  const matrizStr = matrizInput.value.trim();
+
+  const elementos = matrizStr.split(',').map(num => parseInt(num.trim(), 10));
+
+  if (elementos.length !== 9) {
+    alert('Por favor, insira exatamente 9 números separados por vírgula.');
+    return;
+  }
+
+  const matriz = [];
+  for (let i = 0; i < 3; i++) {
+    matriz.push(elementos.slice(i * 3, i * 3 + 3));
+  }
+
+  const matrizExibidaElement = document.getElementById('matrizExibida');
+  matrizExibidaElement.innerHTML = '<strong>Matriz 3x3:</strong><br>';
+  for (let i = 0; i < matriz.length; i++) {
+    matrizExibidaElement.innerHTML += `| ${matriz[i].join(' | ')} |<br>`;
+  }
+
+  let soma = 0;
+  for (let i = 0; i < matriz.length; i++) {
+    for (let j = 0; j < matriz[i].length; j++) {
+      soma += matriz[i][j];
+    }
+  }
+
+  const resultadoElement = document.getElementById('resultadooo');
+  resultadoElement.textContent = `A soma dos elementos da matriz é: ${soma}`;
+}
+ //Ex7
+ function calcularFatorial() {
+  const numeroInput = document.getElementById('numero');
+  const numero = parseInt(numeroInput.value);
+
+  if (numero < 0) {
+    alert('Por favor, digite um número inteiro não negativo.');
+    return;
+  }
+
+  let fatorial = 1;
+  for (let i = 2; i <= numero; i++) {
+    fatorial *= i;
+  }
+
+  const resultadoElement = document.getElementById('resultad');
+  resultadoElement.textContent = `O fatorial de ${numero} é: ${fatorial}`;
+}
+ //Ex8
+ function exibirMensagem() {
+  const opcoesSelect = document.getElementById('opcoes');
+  const escolha = opcoesSelect.value;
+
+  let mensagem = '';
+
+  switch (escolha) {
+    case '1':
+      mensagem = 'Opção 1 escolhida';
+      break;
+    case '2':
+      mensagem = 'Opção 2 escolhida';
+      break;
+    case '3':
+      mensagem = 'Opção 3 escolhida';
+      break;
+    default:
+      mensagem = 'Opção inválida';
+  }
+
+  const resultadoElement = document.getElementById('resulta');
+  resultadoElement.textContent = mensagem;
+}
+ //Ex9
+ function encontrarMaiorNumero() {
+  const vetorInput = document.getElementById('vetor');
+  const vetorStr = vetorInput.value.trim();
+
+  const numeros = vetorStr.split(',').map(num => parseFloat(num.trim()));
+
+  if (numeros.some(isNaN)) {
+    alert('Por favor, insira apenas números válidos separados por vírgula.');
+    return;
+  }
+
+  if (numeros.length === 0) {
+    alert('Por favor, insira ao menos um número válido.');
+    return;
+  }
+
+  const maiorNumero = Math.max(...numeros);
+
+  const resultadoElement = document.getElementById('result');
+  resultadoElement.textContent = `O maior número do vetor é: ${maiorNumero}`;
+}
+
+ //Ex10
+
+ function calcularMediaa() {
+  const matrizInput = document.getElementById('matrizz');
+  const matrizStr = matrizInput.value.trim();
+
+  const elementos = matrizStr.split(',').map(num => parseFloat(num.trim()));
+
+  if (elementos.length !== 9) {
+    alert('Por favor, insira exatamente 9 números separados por vírgula.');
+    return;
+  }
+
+  const matriz = [];
+  for (let i = 0; i < 3; i++) {
+    matriz.push(elementos.slice(i * 3, i * 3 + 3));
+  }
+
+  let soma = 0;
+  for (let i = 0; i < matriz.length; i++) {
+    for (let j = 0; j < matriz[i].length; j++) {
+      soma += matriz[i][j];
+    }
+  }
+
+  const totalElementos = matriz.length * matriz[0].length;
+  const media = soma / totalElementos;
+
+  const mediaResultadoElement = document.getElementById('mediaResultadoo');
+  mediaResultadoElement.textContent = `A média dos elementos da matriz é: ${media.toFixed(2)}`;
+
+  const matrizExibidaElement = document.getElementById('matrizExibidaa');
+  matrizExibidaElement.innerHTML = '<strong>Matriz 3x3:</strong><br>';
+  for (let i = 0; i < matriz.length; i++) {
+    matrizExibidaElement.innerHTML += `| ${matriz[i].join(' | ')} |<br>`;
+  }
+}
+</script>
+<header>
+    Pedro Lorenzetti
+</header>
+<title>
+    Pedro Lorenzetti IHC tarefa 6
+</title>
+<!--Ex3-->
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Ex 3 - Verificando Nota</h1>
+  <label for="nota">Digite sua nota:</label>
+  <input type="number" id="nota" step="0.1">
+  <button onclick="verificarNota()">Verificar</button>
+  <p id="mensagem"></p>
+
+  <script src="script.js"></script>
+</body>
+<br>
+<br>
+<!--Ex4-->
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Ex 4 - Cálculo da Média</h1>
+    <label for="numeros">Digite os números do vetor, separe por vírgula:</label>
+    <input type="text" id="numeros">
+    <button onclick="ex4CalcularMedia()">Calcular Média</button>
+    <p id="resultado"></p>
+  
+    <script src="script.js"></script>
+  </body>
+  <br>
+  <br>
+<!--Ex5-->
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Ex 5 - Exibir Mensagem</h1>
+    <label for="letra">Digite uma letra:</label>
+    <input type="text" id="letra">
+    <button onclick="ex5ExibirMensagem()">Exibir Mensagem</button>
+    <p id="resultadoo"></p>
+  
+    <script src="script.js"></script>
+  </body>
+  <br>
+  <br>
+<!--Ex6-->
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Ex 6 - Soma dos Elementos da Matriz</h1>
+    <label for="matriz">Digite os elementos da matriz, separe por vírgula:</label>
+    <input type="text" id="matriz">
+    <button onclick="ex6CalcularSoma()">Calcular Soma</button>
+    <p id="resultadooo"></p>
+    <div id="matrizExibida"></div>
+  
+    <script src="script.js"></script>
+  </body>
+  <br>
+  <br>
+<!--Ex7-->
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Ex 7 - Calculadora de Fatorial</h1>
+    <label for="numero">Digite um número inteiro não negativo:</label>
+    <input type="number" id="numero" min="0">
+    <button onclick="calcularFatorial()">Calcular Fatorial</button>
+    <p id="resultad"></p>
+  
+    <script src="script.js"></script>
+  </body>
+  <br>
+  <br>
+<!--Ex8-->
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Ex 8 - Menu de Opções</h1>
+    <label for="opcoes">Escolha uma opção:</label>
+    <select id="opcoes">
+      <option value="1">1. Opção 1</option>
+      <option value="2">2. Opção 2</option>
+      <option value="3">3. Opção 3</option>
+    </select>
+    <button onclick="exibirMensagem()">Exibir Mensagem</button>
+    <p id="resulta"></p>
+  
+    <script src="script.js"></script>
+  </body>
+  <br>
+  <br>
+<!--Ex9-->
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Ex 9 - Maior Número do Vetor</h1>
+    <label for="vetor">Digite os números do vetor, separe por vírgula:</label>
+    <input type="text" id="vetor">
+    <button onclick="encontrarMaiorNumero()">Encontrar Maior Número</button>
+    <p id="result"></p>
+  
+    <script src="script.js"></script>
+    <br>
+    <br>
+<!--Ex10-->
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Ex 10 - Média e Matriz</h1>
+    <label for="matriz">Digite os elementos da matriz 3x3, separe por vírgula:</label>
+    <input type="text" id="matrizz">
+    <button onclick="calcularMediaa()">Calcular Média e Mostrar Matriz</button>
+    <p id="mediaResultadoo"></p>
+    <div id="matrizExibidaa"></div>
+  
+    <script src="script.js"></script>
+  </body>
+</html>
